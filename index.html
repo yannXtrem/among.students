@@ -4,29 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dortoir Assistant</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .request-form { margin-bottom: 20px; }
-        .request-form input, .request-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
-        .request-form button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Dortoir Assistant</h1>
-    <div class="request-form">
-        <input type="text" id="request-title" placeholder="Titre de la demande">
-        <textarea id="request-description" placeholder="Description de la demande"></textarea>
-        <button onclick="submitRequest()">Soumettre</button>
+    <div id="app">
+        <!-- La vue principale sera injectée ici par JavaScript -->
     </div>
 
-    <script>
-        function submitRequest() {
-            const title = document.getElementById('request-title').value;
-            const description = document.getElementById('request-description').value;
-
-            // Envoyer les données au bot via l'API Telegram
-            Telegram.WebApp.sendData(JSON.stringify({ title, description }));
-        }
-    </script>
+    <!-- Scripts -->
+    <script src="app/model.js"></script>
+    <script src="app/view.js"></script>
+    <script src="app/controller.js"></script>
+    <script src="app/main.js"></script>
 </body>
 </html>
