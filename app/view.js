@@ -45,6 +45,14 @@ class View {
                 <h3 class="font-bold">${request.title}</h3>
                 <p class="text-sm text-gray-600">${request.description}</p>
                 <p class="text-xs text-gray-500 mt-2">${type}</p>
+                <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
+                    <button data-id="${request.id}" class="help-button inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative">
+                        🤝
+                    </button>
+                    <button data-id="${request.id}" class="mute-button inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative">
+                        🔇
+                    </button>
+                </span>
             </div>
         `).join('');
         this.requestsContent.innerHTML = requestsHTML;

@@ -15,6 +15,16 @@ class Controller {
             tile.addEventListener('click', () => this.handleTileClick(tile.dataset.id));
         });
 
+        // Ecouteur pour les boutons d'action Help
+        document.querySelectorAll('.help-button').forEach(button => {
+            button.addEventListener('click', () => this.handleHelpButtonClick(button.dataset.id));
+        });
+
+        // Ecouteur pour les boutons d'action Mute
+        document.querySelectorAll('.mute-button').forEach(button => {
+            button.addEventListener('click', () => this.handleMuteButtonClick(button.dataset.id));
+        });
+
         // Ecouteur pour le bouton de retour
         document.getElementById('back-to-main-button').addEventListener('click', () => this.backToMainView());
 
@@ -28,9 +38,9 @@ class Controller {
         this.view.requestForm.addEventListener('submit', (event) => this.handleCreateRequest(event));
 
         // Écouteurs pour les boutons du menu des requêtes
-        document.getElementById('my-requests-button').addEventListener('click', () => this.showRequests('my-requests'));
-        document.getElementById('published-requests-button').addEventListener('click', () => this.showRequests('published-requests'));
-        document.getElementById('expired-requests-button').addEventListener('click', () => this.showRequests('expired-requests'));
+        document.getElementById('my-requests-button').addEventListener('click', () => this.showRequestsByFilter('my-requests'));
+        document.getElementById('published-requests-button').addEventListener('click', () => this.showRequestsByFilter('published'));
+        document.getElementById('expired-requests-button').addEventListener('click', () => this.showRequestsByFilter('muted'));
 
         // Écouteur pour le bouton des notifications
         document.getElementById('notifications-button').addEventListener('click', () => this.showNotifications());
@@ -65,12 +75,27 @@ class Controller {
         this.view.renderRequests(requests, type);
     }
 
+    handleHelpButtonClick(id) {
+        this.model.updateRequestStatus(id, 'helping');
+        console.log("Helping request with ID:", id);
+    }
+
+    handleMuteButtonClick(id) {
+        this.model.updateRequestStatus(id, 'muted');
+        console.log("Muting request with ID:", id);
+    }
+
     backToMainView() {
         this.view.showMainView();
     }
 
     showRequests(type) {
         const requests = this.model.getRequests(type);
+        this.view.renderRequests(requests, type);
+    }
+
+    showRequestsByFilter(filter, type) {
+        const requests = this.model.getRequestsByFilter(filter, type);
         this.view.renderRequests(requests, type);
     }
 

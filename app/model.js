@@ -13,26 +13,28 @@ class Model {
         this.requests = {
             types: ["autres", "taxi", "courses", "imprimer", "aliments", "liquidites", "medication"],
             autres: [
-                { id: 1, title: "Autres", description: "Je cherche quelqu'un pour m'aider à faire une autre chose." }
+                { id: 1,status: "muted", title: "Autres", description: "Je cherche quelqu'un pour m'aider à faire une autre chose." }
             ],
             taxi: [
-                { id: 1, title: "Partage de taxi", description: "Je cherche à partager un taxi pour l'université demain matin." },
-                { id: 2, title: "Partage de taxi", description: "Quelqu'un va à l'aéroport ce soir ?" }
+                { id: 1, status: "published", title: "Partage de taxi", description: "Je cherche à partager un taxi pour l'université demain matin." },
+                { id: 2, status: "published", title: "Partage de taxi", description: "Quelqu'un va à l'aéroport ce soir ?" }
             ],
             courses: [
-                { id: 1, title: "Aide pour les courses", description: "Je cherche quelqu'un pour m'aider à faire les courses ce week-end." }
+                { id: 1, status: "published", title: "Aide pour les courses", description: "Je cherche quelqu'un pour m'aider à faire les courses ce week-end." }
             ],
             imprimer: [
-                { id: 1, title: "Aide pour imprimer", description: "J'ai besoin d'aide pour imprimer un document urgent." }
+                { id: 1, status: "published", title: "Aide pour imprimer", description: "J'ai besoin d'aide pour imprimer un document urgent." }
             ],
             aliments: [
-                { id: 1, title: "Échanges d'aliments", description: "Je cherche quelqu'un pour m'aider à échanger des aliments." }
+                { id: 1, status: "published", title: "Échanges d'aliments", description: "Je cherche quelqu'un pour m'aider à échanger des aliments." }
             ],
             liquidites: [
-                { id: 1, title: "Transferts de liquidités", description: "Je cherche quelqu'un pour m'aider à faire un transfert de liquidités." }
+                { id: 1, status: "published", title: "Transferts de liquidités", description: "Je cherche quelqu'un pour m'aider à faire un transfert de liquidités." }
             ],
             medication: [
-                { id: 1, title: "Aide de médication", description: "Je cherche quelqu'un pour m'aider à prendre le médicament." }
+                { id: 1, status: "published", title: "Aide de médication", description: "Je cherche quelqu'un pour m'aider à prendre le médicament." },
+                { id: 2, status: "muted", title: "Aide de médication", description: "J'ai besoin d'aide pour prendre le médicament." },
+                { id: 3, status: "my-requests", title: "Aide de médication", description: "Je cherche quelqu'un pour m'aider à prendre le médicament demain." }
             ]
         };
 
@@ -43,12 +45,27 @@ class Model {
         ];
     }
 
+    updateRequestStatus(id, type, status) {
+        let request = this.requests[type].find(r => r.id === id);
+        if (request) {
+            request.status = status;
+            //remplacer l'ancienne requete par la nouvelle
+            this.requests[type] = this.requests[type].filter(r => r.id !== id);
+            this.requests[type].push(request);
+        }
+    }
+
     getMenuItems() {
         return this.menuItems;
     }
 
     getNotifications() {
         return this.notifications;
+    }
+
+    getRequestsByFilter(filter, type){
+        // Renvoie les requêtes filtrées par type
+        return this.requests[type].filter(request => request.status === filter) || [];
     }
 
     getRequests(type) {
@@ -63,7 +80,8 @@ class Model {
         const newRequest = {
             id: this.requests[type].length + 1,
             title: this.getTitleByType(type),
-            description: description
+            description: description,
+            status: "published"
         };
         this.requests[type].push(newRequest);
     }
