@@ -10,6 +10,7 @@ class Model {
         ];
 
         this.requests = {
+            types: ["taxi", "courses", "imprimer", "aliments", "liquidites", "medication"],
             taxi: [
                 { id: 1, title: "Partage de taxi", description: "Je cherche à partager un taxi pour l'université demain matin." },
                 { id: 2, title: "Partage de taxi", description: "Quelqu'un va à l'aéroport ce soir ?" }
@@ -48,6 +49,10 @@ class Model {
 
     getRequests(type) {
         return this.requests[type] || [];
+    }
+
+    getRequestType(id){
+        return this.requests.types[id] || [];
     }
 
     addRequest(type, description) {

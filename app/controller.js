@@ -58,7 +58,7 @@ class Controller {
 
     handleTileClick(id) {
         const type = this.getRequestTypeById(id);
-        console.log("Request type : "+type);
+        console.log("Request type got : "+type);
         this.view.showRequestsView();
         const requests = this.model.getRequests(type);
         console.log("Requests : "+requests);
@@ -77,7 +77,9 @@ class Controller {
     getRequestTypeById(id) {
         const menuItems = this.model.getMenuItems();
         const item = menuItems.find(item => item.id === parseInt(id));
-        return item ? item.title.toLowerCase().replace(/ /g, '-') : '';
+        console.log("Item title : "+item.title);
+        console.log("Item id : "+item.id);
+        return this.model.getRequestType(item.id);
     }
 
     showNotifications() {
