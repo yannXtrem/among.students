@@ -8,9 +8,19 @@ class Model {
             { id: 5, emoji: "💵", title: "Transferts de liquidités" },
             { id: 6, emoji: "💊", title: "Aide de médication" }
         ];
+        this.notifications = [
+            { id: 1, message: "Nouvelle demande de partage de taxi." },
+            { id: 2, message: "Quelqu'un a besoin d'aide pour les courses." },
+            { id: 3, message: "Demande d'impression urgente." }
+        ];
     }
 
     getMenuItems() {
         return this.menuItems;
     }
+
+    getNotifications() {
+        return this.notifications;
+    }
+
 }
