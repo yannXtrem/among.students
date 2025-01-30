@@ -45,10 +45,6 @@ class Controller {
         return item ? item.title.toLowerCase().replace(/ /g, '-') : '';
     }
 
-    handleTileClick(id) {
-        console.log(`Tuile cliquée : ${id}`);
-    }
-
     showNotifications() {
         const notifications = this.model.getNotifications();
         this.view.renderNotifications(notifications);
