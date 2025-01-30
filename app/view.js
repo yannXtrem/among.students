@@ -1,6 +1,9 @@
 class View {
     constructor() {
         this.app = document.getElementById('app');
+        this.mainView = document.getElementById('main-view');
+        this.notificationsPopup = document.getElementById('notifications-popup');
+        this.notificationsList = document.getElementById('notifications-list');
     }
 
     renderMenu(menuItems) {
@@ -14,6 +17,20 @@ class View {
                 `).join('')}
             </div>
         `;
-        this.app.innerHTML = menuHTML;
+        this.mainView.innerHTML = menuHTML;
+    }
+
+    renderNotifications(notifications) {
+        this.notificationsList.innerHTML = notifications.map(notification => `
+            <li>${notification.message}</li>
+        `).join('');
+    }
+
+    showNotificationsPopup() {
+        this.notificationsPopup.style.display = 'flex';
+    }
+
+    hideNotificationsPopup() {
+        this.notificationsPopup.style.display = 'none';
     }
 }
