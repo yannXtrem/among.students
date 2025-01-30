@@ -104,12 +104,24 @@ class Controller {
     showRequests(type) {
         const requests = this.model.getRequests(type);
         this.view.renderRequests(requests, type);
+        this.addEventListenersForActionButtons();
+    }
+
+    addEventListenersForActionButtons() {
+        document.querySelectorAll('.help-button').forEach(button => {
+            button.addEventListener('click', () => this.handleHelpButtonClick(button.dataset.id));
+        });
+
+        document.querySelectorAll('.mute-button').forEach(button => {
+            button.addEventListener('click', () => this.handleMuteButtonClick(button.dataset.id));
+        });
     }
 
     showRequestsByFilter(filter) {
         const type = sessionStorage.getItem('requestType');
         const requests = this.model.getRequestsByFilter(filter, type);
         this.view.renderRequests(requests, type);
+        this.addEventListenersForActionButtons();
     }
 
     getRequestTypeById(id) {
