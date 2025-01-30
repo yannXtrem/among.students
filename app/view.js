@@ -47,12 +47,12 @@ class View {
                 <p class="text-sm text-gray-600">${request.description}</p>
                 <p class="text-xs text-gray-500 mt-2">${type}</p>
                 <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
-                    <button data-id="${request.id}" class="help-button inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative">
+                    <div data-id="${request.id}" class="help-button inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative">
                         🤝
-                    </button>
-                    <button data-id="${request.id}" class="mute-button inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative">
+                    </div>
+                    <div data-id="${request.id}" class="mute-button inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative">
                         🔇
-                    </button>
+                    </div>
                 </span>
             </div>
         `).join('');
