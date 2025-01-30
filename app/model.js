@@ -1,3 +1,4 @@
+import * as e from 'express'
 class Model {
     constructor() {
         this.menuItems = [
@@ -6,11 +7,15 @@ class Model {
             { id: 3, emoji: "🖨️", title: "Aide pour imprimer" },
             { id: 4, emoji: "🍎", title: "Échanges d'aliments" },
             { id: 5, emoji: "💵", title: "Transferts de liquidités" },
-            { id: 6, emoji: "💊", title: "Aide de médication" }
+            { id: 6, emoji: "💊", title: "Aide de médication" },
+            { id: 0, emoji: "🚀", title: "Autres" }
         ];
 
         this.requests = {
-            types: ["taxi", "courses", "imprimer", "aliments", "liquidites", "medication"],
+            types: ["autres", "taxi", "courses", "imprimer", "aliments", "liquidites", "medication"],
+            autres: [
+                { id: 1, title: "Autres", description: "Je cherche quelqu'un pour m'aider à faire une autre chose." }
+            ],
             taxi: [
                 { id: 1, title: "Partage de taxi", description: "Je cherche à partager un taxi pour l'université demain matin." },
                 { id: 2, title: "Partage de taxi", description: "Quelqu'un va à l'aéroport ce soir ?" }
