@@ -2,8 +2,34 @@ class View {
     constructor() {
         this.app = document.getElementById('app');
         this.mainView = document.getElementById('main-view');
+        this.requestsView = document.getElementById('requests-view');
+        this.requestsContent = document.getElementById('requests-content');
         this.notificationsPopup = document.getElementById('notifications-popup');
         this.notificationsList = document.getElementById('notifications-list');
+    }
+
+    // Afficher la vue des requêtes
+    showRequestsView() {
+        this.mainView.classList.add('hidden');
+        this.requestsView.classList.remove('hidden');
+    }
+
+    // Afficher la vue principale
+    showMainView() {
+        this.requestsView.classList.add('hidden');
+        this.mainView.classList.remove('hidden');
+    }
+
+    // Afficher les requêtes dans la vue des requêtes
+    renderRequests(requests, type) {
+        const requestsHTML = requests.map(request => `
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="font-bold">${request.title}</h3>
+                <p class="text-sm text-gray-600">${request.description}</p>
+                <p class="text-xs text-gray-500 mt-2">${type}</p>
+            </div>
+        `).join('');
+        this.requestsContent.innerHTML = requestsHTML;
     }
 
     renderMenu(menuItems) {
