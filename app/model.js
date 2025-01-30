@@ -46,6 +46,8 @@ class Model {
     }
 
     updateRequestStatus(id, type, status) {
+        console.log("Updating request status for ID:", id, "Type:", type, "Status:", status);
+        if(!type) type = sessionStorage.getItem('requestType');
         let request = this.requests[type].find(r => r.id === id);
         if (request) {
             request.status = status;

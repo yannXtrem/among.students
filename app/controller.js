@@ -68,13 +68,12 @@ class Controller {
 
     handleTileClick(id) {
         const type = this.getRequestTypeById(id);
-        console.log("Request type got : "+type);
         // On enregistre le type de requête dans la session
         sessionStorage.setItem('requestType', type);
         this.view.showRequestsView();
         const requests = this.model.getRequests(type);
-        console.log("Requests : "+requests);
         this.view.renderRequests(requests);
+        this.addEventListenersForActionButtons();
     }
 
     handleHelpButtonClick(id) {
@@ -82,8 +81,7 @@ class Controller {
         const requests = this.model.getRequests(type);
         const request = requests.find(r => r.id === parseInt(id));
         if (request) {
-            this.model.updateRequestStatus(id, 'helped');
-            console.log("Helped request with ID:", id);
+            this.model.updateRequestStatus(id, type, 'helped');
         }
     }
 
@@ -92,8 +90,7 @@ class Controller {
         const requests = this.model.getRequests(type);
         const request = requests.find(r => r.id === parseInt(id));
         if (request) {
-            this.model.updateRequestStatus(id, 'muted');
-            console.log("Muting request with ID:", id);
+            this.model.updateRequestStatus(id, type, 'muted');
         }
     }
 
@@ -108,6 +105,8 @@ class Controller {
     }
 
     addEventListenersForActionButtons() {
+        console.log("Ajout des ecouteurs pour les boutons d'action");
+        
         document.querySelectorAll('.help-button').forEach(button => {
             button.addEventListener('click', () => this.handleHelpButtonClick(button.dataset.id));
         });
