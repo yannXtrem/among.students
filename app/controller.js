@@ -15,6 +15,9 @@ class Controller {
             tile.addEventListener('click', () => this.handleTileClick(tile.dataset.id));
         });
 
+        // Ecouteur pour le bouton de retour
+        document.getElementById('back-to-main-button').addEventListener('click', () => this.backToMainView());
+
         // Écouteur pour le bouton de création de requêtes
         document.getElementById('create-request-button').addEventListener('click', () => this.view.showCreateRequestPopup());
 
@@ -58,6 +61,10 @@ class Controller {
         this.view.showRequestsView();
         const requests = this.model.getRequests(type);
         this.view.renderRequests(requests, type);
+    }
+
+    backToMainView() {
+        this.view.showMainView();
     }
 
     showRequests(type) {
