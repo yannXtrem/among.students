@@ -72,7 +72,7 @@ class Controller {
         // On enregistre le type de requête dans la session
         sessionStorage.setItem('requestType', type);
         this.view.showRequestsView();
-        const requests = this.model.getRequests();
+        const requests = this.model.getRequests(type);
         console.log("Requests : "+requests);
         this.view.renderRequests(requests);
     }
@@ -97,7 +97,7 @@ class Controller {
     }
 
     showRequestsByFilter(filter) {
-        const type = this.getRequestTypeById(filter);
+        const type = sessionStorage.getItem('requestType');
         const requests = this.model.getRequestsByFilter(filter, type);
         this.view.renderRequests(requests, type);
     }
