@@ -6,6 +6,24 @@ class View {
         this.requestsContent = document.getElementById('requests-content');
         this.notificationsPopup = document.getElementById('notifications-popup');
         this.notificationsList = document.getElementById('notifications-list');
+        this.createRequestPopup = document.getElementById('create-request-popup');
+        this.requestForm = document.getElementById('request-form');
+    }
+
+    // Afficher le formulaire de création de requêtes
+    showCreateRequestPopup() {
+        this.createRequestPopup.classList.remove('hidden');
+        setTimeout(() => {
+            this.createRequestPopup.querySelector('div').classList.remove('translate-y-full');
+        }, 10);
+    }
+
+    // Masquer le formulaire de création de requêtes
+    hideCreateRequestPopup() {
+        this.createRequestPopup.querySelector('div').classList.add('translate-y-full');
+        setTimeout(() => {
+            this.createRequestPopup.classList.add('hidden');
+        }, 300);
     }
 
     // Afficher la vue des requêtes

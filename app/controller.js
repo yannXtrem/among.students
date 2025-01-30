@@ -15,6 +15,15 @@ class Controller {
             tile.addEventListener('click', () => this.handleTileClick(tile.dataset.id));
         });
 
+        // Écouteur pour le bouton de création de requêtes
+        document.getElementById('create-request-button').addEventListener('click', () => this.view.showCreateRequestPopup());
+
+        // Écouteur pour annuler la création de requêtes
+        document.getElementById('cancel-request-button').addEventListener('click', () => this.view.hideCreateRequestPopup());
+
+        // Écouteur pour soumettre le formulaire de création de requêtes
+        this.view.requestForm.addEventListener('submit', (event) => this.handleCreateRequest(event));
+
         // Écouteurs pour les boutons du menu des requêtes
         document.getElementById('my-requests-button').addEventListener('click', () => this.showRequests('my-requests'));
         document.getElementById('published-requests-button').addEventListener('click', () => this.showRequests('published-requests'));
@@ -25,6 +34,23 @@ class Controller {
 
         // Écouteur pour fermer la popup
         document.getElementById('close-popup').addEventListener('click', () => this.view.hideNotificationsPopup());
+    }
+
+    handleCreateRequest(event) {
+        event.preventDefault();
+
+        // Récupérer les données du formulaire
+        const type = document.getElementById('request-type').value;
+        const description = document.getElementById('request-description').value;
+
+        // Ajouter la requête au modèle (à implémenter dans le modèle)
+        this.model.addRequest(type, description);
+
+        // Masquer le formulaire
+        this.view.hideCreateRequestPopup();
+
+        // Afficher un message de succès (optionnel)
+        alert('Requête créée avec succès !');
     }
 
     handleTileClick(id) {

@@ -44,7 +44,59 @@
                 <!-- Les requêtes seront injectées ici par JavaScript -->
             </div>
         </div>
+        <!-- Bouton pour afficher le formulaire -->
+        <button id="create-request-button"
+            class="fixed bottom-6 right-6 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none">
+            ➕
+        </button>
 
+        <!-- Formulaire de création de requêtes (popup) -->
+        <div id="create-request-popup"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-end justify-center p-4">
+            <div
+                class="bg-white rounded-t-lg shadow-lg w-full max-w-md transform transition-transform duration-300 translate-y-full">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold mb-4">Créer une requête</h2>
+                    <form id="request-form">
+                        <!-- Sélection du type de requête -->
+                        <div class="mb-4">
+                            <label for="request-type" class="block text-sm font-medium text-gray-700">Type de
+                                requête</label>
+                            <select id="request-type"
+                                class="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="taxi">Partage de taxi</option>
+                                <option value="courses">Aide pour les courses</option>
+                                <option value="impression">Aide pour imprimer</option>
+                                <option value="aliments">Échanges d'aliments</option>
+                                <option value="liquidites">Transferts de liquidités</option>
+                                <option value="medication">Aide de médication</option>
+                            </select>
+                        </div>
+
+                        <!-- Champ de description (richtext) -->
+                        <div class="mb-4">
+                            <label for="request-description"
+                                class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="request-description"
+                                class="mt-1 block w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                rows="4" placeholder="Décrivez votre requête..."></textarea>
+                        </div>
+
+                        <!-- Boutons du formulaire -->
+                        <div class="flex justify-end space-x-2">
+                            <button type="button" id="cancel-request-button"
+                                class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 focus:outline-none">
+                                ❌
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none">
+                                ✔
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- Popup des notifications (overlay) -->
         <div id="notifications-popup"
             class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
@@ -59,6 +111,7 @@
                 </button>
             </div>
         </div>
+
     </div>
 
     <!-- Scripts -->

@@ -49,4 +49,19 @@ class Model {
     getRequests(type) {
         return this.requests[type] || [];
     }
+
+    addRequest(type, description) {
+        const newRequest = {
+            id: this.requests[type].length + 1,
+            title: this.getTitleByType(type),
+            description: description
+        };
+        this.requests[type].push(newRequest);
+    }
+
+    getTitleByType(type) {
+        const menuItems = this.getMenuItems();
+        const item = menuItems.find(item => item.title.toLowerCase().replace(/ /g, '-') === type);
+        return item ? item.title : 'Requête inconnue';
+    }
 }
