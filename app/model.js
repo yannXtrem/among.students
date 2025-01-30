@@ -1,4 +1,3 @@
-import * as e from 'express'
 class Model {
     constructor() {
         this.menuItems = [
@@ -8,7 +7,7 @@ class Model {
             { id: 4, emoji: "🍎", title: "Échanges d'aliments" },
             { id: 5, emoji: "💵", title: "Transferts de liquidités" },
             { id: 6, emoji: "💊", title: "Aide de médication" },
-            { id: 0, emoji: "🚀", title: "Autres" }
+            { id: 0, emoji: "🚀", title: "Autres" },
         ];
 
         this.requests = {
