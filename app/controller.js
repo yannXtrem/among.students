@@ -58,8 +58,10 @@ class Controller {
 
     handleTileClick(id) {
         const type = this.getRequestTypeById(id);
+        console.log("Request type : "+type);
         this.view.showRequestsView();
         const requests = this.model.getRequests(type);
+        console.log("Requests : "+requests);
         this.view.renderRequests(requests, type);
     }
 
