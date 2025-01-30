@@ -5,33 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dortoir Assistant</title>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="bg-gray-100 text-gray-900">
+    <div id="app" class="p-5">
         <!-- En-tête avec bouton de notifications -->
-        <header>
-            <h1>Dortoir Assistant</h1>
-            <button id="notifications-button">🔔</button>
-            <!-- Popup des notifications -->
-            <div id="notifications-popup" class="popup">
-                <div class="popup-content">
-                    <h2>Notifications</h2>
-                    <ul id="notifications-list"></ul>
-                    <button id="close-popup">❌</button>
-                </div>
-            </div>
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Dortoir Assistant</h1>
+            <button id="notifications-button" class="text-2xl focus:outline-none">🔔</button>
         </header>
-    
+
         <!-- Vue principale (menu de tuiles) -->
-        <div id="main-view"></div>
-    
-        
+        <div id="main-view" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Les tuiles seront injectées ici par JavaScript -->
+        </div>
+
+        <!-- Popup des notifications (overlay) -->
+        <div id="notifications-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                <h2 class="text-xl font-bold mb-4">Notifications</h2>
+                <ul id="notifications-list" class="space-y-2">
+                    <!-- Les notifications seront injectées ici par JavaScript -->
+                </ul>
+                <button id="close-popup" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
+                    🔔
+                </button>
+            </div>
+        </div>
     </div>
+
     <!-- Scripts -->
-    <script src="https://yannxtrem.github.io/among.students/app/model.js"></script>
-    <script src="https://yannxtrem.github.io/among.students/app/view.js"></script>
-    <script src="https://yannxtrem.github.io/among.students/app/controller.js"></script>
-    <script src="https://yannxtrem.github.io/among.students/app/main.js"></script>
+    <script src="app/model.js"></script>
+    <script src="app/view.js"></script>
+    <script src="app/controller.js"></script>
+    <script src="app/main.js"></script>
 </body>
 </html>

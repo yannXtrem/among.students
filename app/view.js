@@ -7,30 +7,26 @@ class View {
     }
 
     renderMenu(menuItems) {
-        const menuHTML = `
-            <div class="menu">
-                ${menuItems.map(item => `
-                    <div class="tile" data-id="${item.id}">
-                        <span>${item.emoji}</span>
-                        <p>${item.title}</p>
-                    </div>
-                `).join('')}
+        const menuHTML = menuItems.map(item => `
+            <div class="tile bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:bg-gray-50 transition-colors" data-id="${item.id}">
+                <span class="text-4xl">${item.emoji}</span>
+                <p class="mt-2 text-sm text-gray-600">${item.title}</p>
             </div>
-        `;
+        `).join('');
         this.mainView.innerHTML = menuHTML;
     }
 
     renderNotifications(notifications) {
         this.notificationsList.innerHTML = notifications.map(notification => `
-            <li>${notification.message}</li>
+            <li class="p-2 border-b border-gray-200 last:border-b-0">${notification.message}</li>
         `).join('');
     }
 
     showNotificationsPopup() {
-        this.notificationsPopup.style.display = 'flex';
+        this.notificationsPopup.classList.remove('hidden');
     }
 
     hideNotificationsPopup() {
-        this.notificationsPopup.style.display = 'none';
+        this.notificationsPopup.classList.add('hidden');
     }
 }
