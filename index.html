@@ -13,19 +13,20 @@
         <header>
             <h1>Dortoir Assistant</h1>
             <button id="notifications-button">🔔</button>
+            <!-- Popup des notifications -->
+            <div id="notifications-popup" class="popup">
+                <div class="popup-content">
+                    <h2>Notifications</h2>
+                    <ul id="notifications-list"></ul>
+                    <button id="close-popup">❌</button>
+                </div>
+            </div>
         </header>
     
         <!-- Vue principale (menu de tuiles) -->
         <div id="main-view"></div>
     
-        <!-- Popup des notifications -->
-        <div id="notifications-popup" class="popup">
-            <div class="popup-content">
-                <h2>Notifications</h2>
-                <ul id="notifications-list"></ul>
-                <button id="close-popup">❌</button>
-            </div>
-        </div>
+        
     </div>
     <!-- Scripts -->
     <script src="https://yannxtrem.github.io/among.students/app/model.js"></script>
