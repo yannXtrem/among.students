@@ -13,7 +13,7 @@ class Model {
         this.requests = {
             types: ["autres", "taxi", "courses", "imprimer", "aliments", "liquidites", "medication"],
             autres: [
-                { id: 1,status: "muted", title: "Autres", description: "Je cherche quelqu'un pour m'aider à faire une autre chose." }
+                { id: 1, status: "muted", title: "Autres", description: "Je cherche quelqu'un pour m'aider à faire une autre chose." }
             ],
             taxi: [
                 { id: 1, status: "published", title: "Partage de taxi", description: "Je cherche à partager un taxi pour l'université demain matin." },

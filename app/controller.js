@@ -69,10 +69,12 @@ class Controller {
     handleTileClick(id) {
         const type = this.getRequestTypeById(id);
         console.log("Request type got : "+type);
+        // On enregistre le type de requête dans la session
+        sessionStorage.setItem('requestType', type);
         this.view.showRequestsView();
-        const requests = this.model.getRequests(type);
+        const requests = this.model.getRequests();
         console.log("Requests : "+requests);
-        this.view.renderRequests(requests, type);
+        this.view.renderRequests(requests);
     }
 
     handleHelpButtonClick(id) {
@@ -94,7 +96,8 @@ class Controller {
         this.view.renderRequests(requests, type);
     }
 
-    showRequestsByFilter(filter, type) {
+    showRequestsByFilter(filter) {
+        const type = this.getRequestTypeById(filter);
         const requests = this.model.getRequestsByFilter(filter, type);
         this.view.renderRequests(requests, type);
     }
