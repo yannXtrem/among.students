@@ -78,13 +78,23 @@ class Controller {
     }
 
     handleHelpButtonClick(id) {
-        this.model.updateRequestStatus(id, 'helping');
-        console.log("Helping request with ID:", id);
+        const type = sessionStorage.getItem('requestType');
+        const requests = this.model.getRequests(type);
+        const request = requests.find(r => r.id === parseInt(id));
+        if (request) {
+            this.model.updateRequestStatus(id, 'helped');
+            console.log("Helped request with ID:", id);
+        }
     }
 
     handleMuteButtonClick(id) {
-        this.model.updateRequestStatus(id, 'muted');
-        console.log("Muting request with ID:", id);
+        const type = sessionStorage.getItem('requestType');
+        const requests = this.model.getRequests(type);
+        const request = requests.find(r => r.id === parseInt(id));
+        if (request) {
+            this.model.updateRequestStatus(id, 'muted');
+            console.log("Muting request with ID:", id);
+        }
     }
 
     backToMainView() {

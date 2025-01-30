@@ -40,6 +40,7 @@ class View {
 
     // Afficher les requêtes dans la vue des requêtes
     renderRequests(requests, type) {
+        if(!type) type = sessionStorage.getItem('requestType');
         const requestsHTML = requests.map(request => `
             <div class="bg-white p-4 rounded-lg shadow-md">
                 <h3 class="font-bold">${request.title}</h3>
