@@ -14,12 +14,27 @@
         <!-- En-tête avec bouton de notifications -->
         <header class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Dortoir Assistant</h1>
-            <button id="notifications-button" class="text-2xl focus:outline-none">🔔</button>
+            <button id="ongoing-negotiations-button" class="text-2xl focus:outline-none">🔔</button>
+            <button id="notifications-button" class="text-2xl focus:outline-none">🤝</button>
         </header>
 
         <!-- Vue principale (menu de tuiles) -->
         <div id="main-view" class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <!-- Les tuiles seront injectées ici par JavaScript -->
+        </div>
+        <!-- Vue des négociations en cours (masquée par défaut) -->
+        <div id="ongoing-negotiations-popup"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                <h2 class="text-xl font-bold mb-4">Négociations en cours</h2>
+                <ul id="ongoing-negotiations-list" class="space-y-2">
+                    <!-- Les négociations en cours seront injectées ici par JavaScript -->
+                </ul>
+                <button id="close-ongoing-negotiations-button"
+                    class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 focus:outline-none">
+                    Fermer
+                </button>
+            </div>
         </div>
         <!-- Vue des requêtes (masquée par défaut) -->
         <div id="requests-view" class="hidden">

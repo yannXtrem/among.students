@@ -53,6 +53,17 @@ class Controller {
 
         // Écouteur pour soumettre un message dans la vue des négociations
         this.view.negotiationForm.addEventListener('submit', (event) => this.handleNegotiationMessage(event));
+
+        // Écouteur pour afficher les négociations en cours
+        document.getElementById('ongoing-negotiations-button').addEventListener('click', () => this.showOngoingNegotiations());
+
+        // Écouteur pour fermer la vue des négociations en cours
+        document.getElementById('close-ongoing-negotiations-button').addEventListener('click', () => this.view.hideOngoingNegotiationsPopup());
+    }
+
+    showOngoingNegotiations() {
+        const negotiations = this.model.getOngoingNegotiations();
+        this.view.showOngoingNegotiationsPopup(negotiations);
     }
 
     handleCreateRequest(event) {

@@ -11,6 +11,24 @@ class View {
         this.negotiationView = document.getElementById('negotiation-view');
         this.negotiationMessages = document.getElementById('negotiation-messages');
         this.negotiationForm = document.getElementById('negotiation-form');
+        this.ongoingNegotiationsPopup = document.getElementById('ongoing-negotiations-popup');
+        this.ongoingNegotiationsList = document.getElementById('ongoing-negotiations-list');
+    }
+
+    // Afficher la vue des négociations en cours
+    showOngoingNegotiationsPopup(negotiations) {
+        this.ongoingNegotiationsList.innerHTML = negotiations.map(negotiation => `
+            <li class="p-3 bg-gray-100 rounded-lg">
+                <p class="text-sm"><strong>${negotiation.requestTitle}</strong></p>
+                <p class="text-xs text-gray-600">${negotiation.lastMessage}</p>
+            </li>
+        `).join('');
+        this.ongoingNegotiationsPopup.classList.remove('hidden');
+    }
+
+    // Masquer la vue des négociations en cours
+    hideOngoingNegotiationsPopup() {
+        this.ongoingNegotiationsPopup.classList.add('hidden');
     }
 
     // Afficher le formulaire de création de requêtes

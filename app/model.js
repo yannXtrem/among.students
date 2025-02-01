@@ -43,6 +43,15 @@ class Model {
             { id: 2, message: "Quelqu'un a besoin d'aide pour les courses." },
             { id: 3, message: "Demande d'impression urgente." }
         ];
+
+        this.ongoingNegotiations = [
+            { id: 1, requestTitle: "Partage de taxi", lastMessage: "Je peux vous aider pour le taxi demain matin." },
+            { id: 2, requestTitle: "Aide pour les courses", lastMessage: "Je suis disponible ce week-end." }
+        ];
+    }
+
+    getOngoingNegotiations() {
+        return this.ongoingNegotiations;
     }
 
     updateRequestStatus(id, type, status) {
