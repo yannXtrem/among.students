@@ -59,7 +59,22 @@ class Controller {
 
         // Écouteur pour fermer la vue des négociations en cours
         document.getElementById('close-ongoing-negotiations-button').addEventListener('click', () => this.view.hideOngoingNegotiationsPopup());
+        
+        // Écouteur pour cliquer sur un élément de la liste des négociations en cours
+        this.view.ongoingNegotiationsList.addEventListener('click', (event) => this.handleNegotiationClick(event));
     }
+    handleNegotiationClick(event) {
+        const listItem = event.target.closest('li');
+        if (listItem) {
+            const negotiationId = listItem.dataset.negotiationId;
+            const negotiation = this.model.getNegotiationById(negotiationId);
+            if (negotiation) {
+                this.view.showNegotiationDetails(negotiation);
+                this.view.hideOngoingNegotiationsPopup();
+            }
+        }
+    }
+
 
     showOngoingNegotiations() {
         const negotiations = this.model.getOngoingNegotiations();

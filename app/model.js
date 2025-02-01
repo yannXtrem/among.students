@@ -50,6 +50,10 @@ class Model {
         ];
     }
 
+    getNegotiationById(negotiationId) {
+        return this.ongoingNegotiations.find(negotiation => negotiation.id === parseInt(negotiationId));
+    }
+
     getOngoingNegotiations() {
         return this.ongoingNegotiations;
     }

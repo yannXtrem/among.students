@@ -14,8 +14,10 @@
         <!-- En-tête avec bouton de notifications -->
         <header class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Dortoir Assistant</h1>
-            <button id="ongoing-negotiations-button" class="text-2xl focus:outline-none">🔔</button>
-            <button id="notifications-button" class="text-2xl focus:outline-none">🤝</button>
+            <div class="block mx-4 gap-4">
+                <button id="ongoing-negotiations-button" class="text-2xl focus:outline-none">🤝</button>
+                <button id="notifications-button" class="text-2xl focus:outline-none">🔔</button>
+            </div>
         </header>
 
         <!-- Vue principale (menu de tuiles) -->
@@ -32,7 +34,7 @@
                 </ul>
                 <button id="close-ongoing-negotiations-button"
                     class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 focus:outline-none">
-                    Fermer
+                    ❌
                 </button>
             </div>
         </div>

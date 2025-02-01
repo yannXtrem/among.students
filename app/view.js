@@ -18,7 +18,7 @@ class View {
     // Afficher la vue des négociations en cours
     showOngoingNegotiationsPopup(negotiations) {
         this.ongoingNegotiationsList.innerHTML = negotiations.map(negotiation => `
-            <li class="p-3 bg-gray-100 rounded-lg">
+            <li class="p-3 bg-gray-100 rounded-lg" data-negotiation-id="${negotiation.id}">
                 <p class="text-sm"><strong>${negotiation.requestTitle}</strong></p>
                 <p class="text-xs text-gray-600">${negotiation.lastMessage}</p>
             </li>
@@ -29,6 +29,16 @@ class View {
     // Masquer la vue des négociations en cours
     hideOngoingNegotiationsPopup() {
         this.ongoingNegotiationsPopup.classList.add('hidden');
+    }
+
+    // Afficher la vue détaillée d'une négociation
+    showNegotiationDetails(negotiation) {
+        this.negotiationMessages.innerHTML = `
+            <div class="bg-blue-100 p-3 rounded-lg">
+                <p class="text-sm text-blue-800">Vous avez choisi d'aider pour la requête : <strong>${negotiation.requestTitle}</strong>.</p>
+            </div>
+        `;
+        this.negotiationView.classList.remove('hidden');
     }
 
     // Afficher le formulaire de création de requêtes
