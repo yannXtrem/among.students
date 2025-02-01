@@ -8,6 +8,9 @@ class View {
         this.notificationsList = document.getElementById('notifications-list');
         this.createRequestPopup = document.getElementById('create-request-popup');
         this.requestForm = document.getElementById('request-form');
+        this.negotiationView = document.getElementById('negotiation-view');
+        this.negotiationMessages = document.getElementById('negotiation-messages');
+        this.negotiationForm = document.getElementById('negotiation-form');
     }
 
     // Afficher le formulaire de création de requêtes
@@ -57,6 +60,32 @@ class View {
             </div>
         `).join('');
         this.requestsContent.innerHTML = requestsHTML;
+    }
+
+    // Afficher la vue des négociations
+    showNegotiationView(request) {
+        this.negotiationMessages.innerHTML = `
+            <div class="bg-blue-100 p-3 rounded-lg">
+                <p class="text-sm text-blue-800">Vous avez choisi d'aider pour la requête : <strong>${request.title}</strong>.</p>
+            </div>
+        `;
+        this.negotiationView.classList.remove('hidden');
+    }
+
+    // Masquer la vue des négociations
+    hideNegotiationView() {
+        this.negotiationView.classList.add('hidden');
+    }
+
+    // Ajouter un message à la vue des négociations
+    addNegotiationMessage(message, isUser = true) {
+        const messageClass = isUser ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800';
+        const messageHTML = `
+            <div class="p-3 rounded-lg ${messageClass}">
+                <p class="text-sm">${message}</p>
+            </div>
+        `;
+        this.negotiationMessages.insertAdjacentHTML('beforeend', messageHTML);
     }
 
     renderMenu(menuItems) {

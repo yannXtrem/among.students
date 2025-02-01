@@ -47,6 +47,12 @@ class Controller {
 
         // Écouteur pour fermer la popup
         document.getElementById('close-popup').addEventListener('click', () => this.view.hideNotificationsPopup());
+
+        // Écouteur pour fermer la vue des négociations
+        document.getElementById('close-negotiation-button').addEventListener('click', () => this.view.hideNegotiationView());
+
+        // Écouteur pour soumettre un message dans la vue des négociations
+        this.view.negotiationForm.addEventListener('submit', (event) => this.handleNegotiationMessage(event));
     }
 
     handleCreateRequest(event) {
@@ -82,6 +88,23 @@ class Controller {
         const request = requests.find(r => r.id === parseInt(id));
         if (request) {
             this.model.updateRequestStatus(id, type, 'helped');
+            this.view.showNegotiationView(request);
+        }
+    }
+
+    handleNegotiationMessage(event) {
+        event.preventDefault();
+
+        // Récupérer le message saisi
+        const input = document.getElementById('negotiation-input');
+        const message = input.value.trim();
+
+        if (message) {
+            // Ajouter le message à la vue des négociations
+            this.view.addNegotiationMessage(message);
+
+            // Effacer le champ de saisie
+            input.value = '';
         }
     }
 

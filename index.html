@@ -46,6 +46,31 @@
                 <!-- Les requêtes seront injectées ici par JavaScript -->
             </div>
         </div>
+        <!-- Vue des négociations (masquée par défaut) -->
+        <div id="negotiation-view"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                <h2 class="text-xl font-bold mb-4">🤝 Négociation</h2>
+                <div id="negotiation-messages" class="space-y-4 mb-4">
+                    <!-- Les messages seront injectés ici par JavaScript -->
+                </div>
+                <form id="negotiation-form" class="flex space-x-2">
+                    <input type="text" id="negotiation-input"
+                        class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Écrivez un message...">
+                    <button type="submit"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none">
+                        👍
+                    </button>
+                </form>
+                <button id="close-negotiation-button"
+                    class="mt-4 w-full bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 focus:outline-none">
+                    ❌
+                </button>
+            </div>
+        </div>
+
+
         <!-- Bouton pour afficher le formulaire -->
         <button id="create-request-button"
             class="fixed bottom-6 right-6 text-2xl bg-blue-200 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none">

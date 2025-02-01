@@ -78,6 +78,13 @@ class Model {
         return this.requests.types[id] || [];
     }
 
+    getRequestById(id) {
+        const type = sessionStorage.getItem('requestType');
+        const request = this.requests[type].find(req => req.id === parseInt(requestId));
+        if (request) return request;
+        return null;
+    }
+
     addRequest(type, description) {
         const newRequest = {
             id: this.requests[type].length + 1,
